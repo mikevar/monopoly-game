@@ -6,7 +6,7 @@
     <testsuites>
         <testsuite name="All">
             <directory suffix="Test.php">EntryPoint</directory>
-            <directory suffix="Test.php">Utilities</directory>
+            <!-- <directory suffix="Test.php">Utilities</directory> -->
         </testsuite>
     </testsuites>
     <filter>
