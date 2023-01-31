@@ -1,0 +1,22 @@
+{
+    "name": "mikevar/standard-monopoly-cli",
+    "version": "1.0.0",
+    "type": "library",
+    "keywords": ["monopoly", "monopoly-cli"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Michael Lam",
+            "email": "notmyrealemailmeh@mikevar.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mikevar\\Monopoly\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    }
+}
