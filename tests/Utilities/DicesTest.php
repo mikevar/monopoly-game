@@ -42,4 +42,23 @@ class DicesTest extends \PHPUnit\Framework\TestCase
             [[2, 6], 8],
         ];
     }
+
+    /**
+     * @dataProvider isDoubleCondition
+     */
+    public function testIsDoubleCondition($values, $result): void
+    {
+        $dice = new Dices($values);
+        $this->assertSame($dice->isDouble(), $result);
+    }
+
+    public function isDoubleCondition(): array
+    {
+        return [
+            [[1, 1], true],
+            [[6, 5], false],
+            [[3, 3], true],
+            [[2, 6], false],
+        ];
+    }
 }
