@@ -2,6 +2,8 @@
 
 namespace Mikevar\Monopoly\Utilities;
 
+use Mikevar\Monopoly\Exception\BadParameterException;
+
 /**
  * Dices
  * 
@@ -11,10 +13,10 @@ namespace Mikevar\Monopoly\Utilities;
 class Dices
 {
     /** @var int Minimum value of each dices. */
-    const MIN_RESULT = 1;
+    const MIN_DICE_VALUE = 1;
 
     /** @var int Maximum value of each dices. */
-    const MAX_RESULT = 12;
+    const MAX_DICE_VALUE = 6;
 
     /** @var int[] Minimum value of each dices. */
     private array $values = [1, 1];
@@ -24,6 +26,12 @@ class Dices
      */
     public function __construct(array $values = [1, 1])
     {
+        foreach ($values as $key => $value)
+            if ($value < self::MIN_DICE_VALUE || $value > self::MAX_DICE_VALUE)
+                throw new BadParameterException(
+                    "Excepting value between ".self::MIN_DICE_VALUE." and ".self::MAX_DICE_VALUE.", got {$value} on dice number ".($key + 1)
+                );
+
         $this->values = $values;
     }
 
@@ -35,8 +43,8 @@ class Dices
     public function roll(): Dices
     {
         $this->values = [
-            rand(self::MIN_RESULT, self::MAX_RESULT),
-            rand(self::MIN_RESULT, self::MAX_RESULT),
+            rand(self::MIN_DICE_VALUE, self::MAX_DICE_VALUE),
+            rand(self::MIN_DICE_VALUE, self::MAX_DICE_VALUE),
         ];
 
         return $this;
